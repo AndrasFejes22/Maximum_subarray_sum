@@ -28,12 +28,14 @@ public class Main {
     public static long subLists(List<Long> inputList, long m){
         List<List<Long>> partitions = new ArrayList<>();
         List<Long> sumList = new ArrayList<>();
+        // create sub lists
         for (int i = 0; i < inputList.size(); i++) {
             List<Long> list = new ArrayList<>(inputList);
             for (int j = i+1; j <=inputList.size(); j++) {
                 partitions.add(list.subList(i,j));
             }
         }
+        // osszeg es modulo képzese
         for (int i = 0; i < partitions.size(); i++) {
             //long sum = partitions.get(i).stream().mapToLong(Long::longValue).sum();
             long temp = (partitions.get(i).stream().mapToLong(Long::longValue).sum()) % m;
@@ -42,6 +44,7 @@ public class Main {
             //
             //System.out.println("sum%m: "+sum%m);
         }
+        // max keresese:
         long max = Collections.max(sumList);
         System.out.println("partitions: " + partitions);
         System.out.println("max: " + max);

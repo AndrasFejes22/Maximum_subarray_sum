@@ -14,7 +14,12 @@ public class Main {
         int sum = list.stream().mapToInt(Long::intValue).sum();
         int max = list.stream().mapToInt(Long::intValue).max().orElseThrow();
 
-        System.out.println("max(list): "+sum(list));
+        //System.out.println("max(list): "+sum(list));
+        System.out.println("divideBySub: " );
+        //divideBySub(7,6);
+        System.out.println(21%7);
+        System.out.println(divideBySub(21,7));
+        System.out.println("---------------------------");
 
         //System.out.println("sum : " + sum);
         //System.out.println("max : " + max);
@@ -37,8 +42,14 @@ public class Main {
 
         long max = 0;
         for (int i = 0; i < partitions.size(); i++) {
+
+            /*
             if((sum(partitions.get(i)) % m) > max){
                 max =(sum(partitions.get(i))) % m;
+            }
+            */
+            if(divideBySub((sum(partitions.get(i))), m) > max){
+                max = divideBySub((sum(partitions.get(i))), m);
             }
         }
 
@@ -51,5 +62,19 @@ public class Main {
             sumValue += integerList.get(i);
         }
         return sumValue;
+    }
+
+    public static long divideBySub(long a, long b){
+        int count=0;
+        while(a>=b){
+            a-=b;
+            ++count;
+        }
+
+        //System.out.println("remainder: "+a); // remainder
+        //System.out.println("quotient: "+count);//quotient
+
+        return a;
+
     }
 }

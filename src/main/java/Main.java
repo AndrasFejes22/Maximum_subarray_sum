@@ -48,8 +48,9 @@ public class Main {
                 max =(sum(partitions.get(i))) % m;
             }
             */
-            if(divideBySub((sum(partitions.get(i))), m) > max){
-                max = divideBySub((sum(partitions.get(i))), m);
+            long temp = divideBySub((sum(partitions.get(i))), m);
+            if(temp > max){
+                max = temp;
             }
         }
 
@@ -65,10 +66,10 @@ public class Main {
     }
 
     public static long divideBySub(long a, long b){
-        int count=0;
+        //int count=0;
         while(a>=b){
             a-=b;
-            ++count;
+            //++count;
         }
 
         //System.out.println("remainder: "+a); // remainder
